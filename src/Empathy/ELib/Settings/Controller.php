@@ -7,16 +7,47 @@ use Empathy\ELib\AdminController;
 
 class Controller extends AdminController
 {
-    public function default_event()
+    private static $settings = array();
+
+    private function loadSettings()
     {
         $settings_o = new \stdClass();
 
-        $settings_o->title = TITLE;
-        $settings_o->keywords = "mike michael whiting web developer programmer php lamp mysql javascript css perl linux";
+        foreach(self::$settings as $s) {
 
-        $settings_o->description = "Michael Whiting is a web programmer from West Sussex, England.  With ten years experience of the web, some of his work has powered the Bestival website and also adorned eBay UK.";
-      
-        $this->assign('settings', $settings_o);
+            if($setting = \R::findOne('setting', 'name = ?', array($s))) {
+                $settings_o->$s = $setting->value;
+            }
+        }
+        
+        return $settings_o;
+    }
+
+
+    public function default_event()
+    {
+        self::$settings = array('title', 'keywords', 'description');
+        
+        if(isset($_POST['cancel'])) {
+            $this->redirect('admin');
+        } elseif(isset($_POST['save'])) {
+
+            foreach(self::$settings as $s) {
+
+                if($setting = \R::findOne('setting', 'name = ?', array($s))) {
+                    $setting->value = $_POST[$s];
+                    \R::store($setting);
+                } else {
+                    $setting = \R::dispense('setting');
+                    $setting->name = $s;
+                    $setting->value = $_POST[$s];
+                    \R::store($setting);
+                }
+            }
+            $this->redirect('admin/settings');
+        }
+        
+        $this->assign('settings', $this->loadSettings());
         $this->setTemplate('elib:/admin/siteinfo/settings.tpl');
     }
 }
