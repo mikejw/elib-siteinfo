@@ -7,9 +7,10 @@ use Empathy\ELib\AdminController;
 
 class Controller extends AdminController
 {
-    private static $settings = array();
 
-    private function loadSettings()
+    private static $settings = array('title', 'keywords', 'description');
+
+    public static function loadSettings()
     {
         $settings_o = new \stdClass();
 
@@ -25,9 +26,7 @@ class Controller extends AdminController
 
 
     public function default_event()
-    {
-        self::$settings = array('title', 'keywords', 'description');
-        
+    {        
         if(isset($_POST['cancel'])) {
             $this->redirect('admin');
         } elseif(isset($_POST['save'])) {
@@ -47,7 +46,7 @@ class Controller extends AdminController
             $this->redirect('admin/settings');
         }
         
-        $this->assign('settings', $this->loadSettings());
+        $this->assign('settings', self::loadSettings());
         $this->setTemplate('elib:/admin/siteinfo/settings.tpl');
     }
 }
