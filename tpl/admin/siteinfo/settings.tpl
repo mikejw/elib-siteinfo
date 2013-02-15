@@ -1,6 +1,13 @@
 {include file="elib:/admin/admin_header.tpl"}
 
 
+<div id="admin_nav_outer">
+<ul id="admin_nav">
+<li><a href="http://{$WEB_ROOT}{$PUBLIC_DIR}/admin/settings/cache">Cache</a></li>
+</ul>
+</div>
+
+<p>&nbsp;</p>
 
 <div class="grey_top">
 <div class="top_right">

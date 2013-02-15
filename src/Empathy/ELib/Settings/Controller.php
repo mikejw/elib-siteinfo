@@ -1,7 +1,8 @@
 <?php
 
 namespace Empathy\ELib\Settings;
-use Empathy\ELib\AdminController;
+use Empathy\ELib\AdminController,
+    Empathy\MVC\VCache;
 
 
 
@@ -9,6 +10,23 @@ class Controller extends AdminController
 {
 
     private static $settings = array('title', 'keywords', 'description');
+
+
+    public function clear_cache()
+    {
+        $cache = $this->stash->get('cache');
+        $cache->clear();
+        $this->redirect('admin/settings/cache');
+    }
+
+    public function cache()
+    {
+        $cache = $this->stash->get('cache');
+        $cache_data = $cache->getAllCacheData();
+
+        $this->assign('cache_data', $cache_data);
+        $this->setTemplate('elib://admin/siteinfo/cache.tpl');
+    }
 
     public static function loadSettings()
     {
