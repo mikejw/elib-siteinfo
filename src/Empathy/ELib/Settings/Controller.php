@@ -17,6 +17,7 @@ class Controller extends AdminController
         $cache = $this->stash->get('cache');
         $cache->clear();
         $this->redirect('admin/settings/cache');
+        return false;
     }
 
     public function cache()
