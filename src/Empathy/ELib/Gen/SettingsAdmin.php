@@ -2,7 +2,7 @@
 
 namespace Empathy\ELib\Gen;
 
-class Blog extends \Empathy\MVC\Util\ControllerGen
+class SettingsAdmin extends \Empathy\MVC\Util\ControllerGen
 {
     protected $name = 'settings';
     protected $module = 'admin';
