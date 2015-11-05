@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "mikejw/empathy": "dev-develop",
+        "mikejw/elib-base": "dev-develop",
         "gabordemooij/redbean": "dev-master"
     },
     "autoload": {
