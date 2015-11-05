@@ -1,8 +1,9 @@
 <?php
 
 namespace Empathy\ELib\Settings;
-use Empathy\ELib\AdminController,
-    Empathy\MVC\VCache;
+
+use Empathy\ELib\AdminController;
+use Empathy\MVC\VCache;
 
 
 
