@@ -4,15 +4,12 @@ namespace Empathy\ELib\Settings;
 
 use Empathy\ELib\AdminController;
 use Empathy\MVC\VCache;
+use Empathy\MVC\DI;
 
 
 
 class Controller extends AdminController
 {
-
-    private static $settings = array('title', 'keywords', 'description');
-
-
     public function clear_cache()
     {
         $cache = $this->stash->get('cache');
@@ -30,29 +27,16 @@ class Controller extends AdminController
         $this->setTemplate('elib://admin/siteinfo/cache.tpl');
     }
 
-    public static function loadSettings()
-    {
-        $settings_o = new \stdClass();
-
-        foreach(self::$settings as $s) {
-
-            if($setting = \R::findOne('setting', 'name = ?', array($s))) {
-                $settings_o->$s = $setting->value;
-            }
-        }
-        
-        return $settings_o;
-    }
-
 
     public function default_event()
-    {        
+    {
+        $service = DI::getContainer()->get('SiteInfo');
+        $settings = $service->getSettings();
+
         if(isset($_POST['cancel'])) {
             $this->redirect('admin');
         } elseif(isset($_POST['save'])) {
-
-            foreach(self::$settings as $s) {
-
+            foreach($settings as $s) {
                 if($setting = \R::findOne('setting', 'name = ?', array($s))) {
                     $setting->value = $_POST[$s];
                     \R::store($setting);
@@ -66,7 +50,7 @@ class Controller extends AdminController
             $this->redirect('admin/settings');
         }
         
-        $this->assign('settings', self::loadSettings());
+        $this->assign('settings', $service->loadSettings());
         $this->setTemplate('elib:/admin/siteinfo/settings.tpl');
     }
 }
