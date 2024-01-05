@@ -2,16 +2,16 @@
 
 namespace Empathy\ELib\MVC\Plugin;
 
+use Empathy\MVC\Plugin\PreDispatch;
 use Empathy\MVC\Plugin\PreEvent;
 use Empathy\MVC\Plugin;
 use Empathy\MVC\DI;
 use Empathy\MVC\Config;
 use Empathy\ELib\VCache;
 
-class SiteInfo extends Plugin implements PreEvent
+class SiteInfo extends Plugin implements PreDispatch, PreEvent
 {
-
-    public function onPreEvent()
+    public function onPreDispatch()
     {
         $stash = DI::getContainer()->get('Stash');
         $cacheHost = str_replace('db-', 'cache-', Config::get('DB_SERVER'));
@@ -20,12 +20,14 @@ class SiteInfo extends Plugin implements PreEvent
         }
         $cache = new VCache($cacheHost, 11211, null, DI::getContainer()->get('CacheEnabled'));
         $stash->store('cache', $cache);
-
-        $controller = $this->bootstrap->getController();
         $siteInfoService = DI::getContainer()->get('SiteInfo');
-        $info = $cache->cachedCallback('site_info', array($siteInfoService, 'getAll'));
-        $controller->assign('site_info', $info);
-        $stash->store('site_info', $info);
+        $stash->store('site_info', $cache->cachedCallback('site_info', array($siteInfoService, 'getAll')));
+    }
+    
+    public function onPreEvent()
+    {
+        $controller = $this->bootstrap->getController();
+        $controller->assign('site_info', DI::getContainer()->get('Stash')->get('site_info'));
     }
 }
 
