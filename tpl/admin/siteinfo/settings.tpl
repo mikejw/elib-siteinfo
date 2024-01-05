@@ -5,7 +5,7 @@
   <a class="btn btn-sm btn-primary" href="http://{$WEB_ROOT}{$PUBLIC_DIR}/admin/settings/cache">Cache</a>
 </div>
 
-{if sizeof($errors)}
+{if isset($errors) and sizeof($errors)}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Error!</strong>
     {foreach from=$errors item=e}
