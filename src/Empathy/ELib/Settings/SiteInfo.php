@@ -27,9 +27,8 @@ class SiteInfo
             if ($this->vendorId) {
                 $sql .= ' and vendor_id = ?';
                 array_push($queryParams, $this->vendorId);
-            } else {
-                $sql .= ' and vendor_id is null';
             }
+
             if($setting = \R::findOne('setting', $sql, $queryParams)) {
                 $settings_o->$s = $setting->value;
             }

@@ -47,25 +47,28 @@ class Controller extends AdminController
         $service = DI::getContainer()->get('SiteInfo');
         $settings = $service->getSettings();
 
-        if(isset($_POST['cancel'])) {
+        if (isset($_POST['cancel'])) {
             $this->redirect('admin');
-        } elseif(isset($_POST['save'])) {
+        } elseif (isset($_POST['save'])) {
             if ($vendorId) {
                 $vendorBean = \R::load('vendor', $vendorId);
             }
 
-            foreach($settings as $s) {
+            foreach ($settings as $s) {
+                if (!isset($_POST[$s])) {
+                  break;
+                }
+
                 $sql = 'name = ?';
                 $queryParams = array($s);
-                if ($vendorBean->id) {
+                if (isset($vendorBean) && $vendorBean->id) {
                     $sql .= ' and vendor_id = ?';
                     array_push($queryParams, $vendorId);
-                } else {
-                    $sql .= ' and vendor_id is null';
                 }
-                if($setting = \R::findOne('setting', $sql, $queryParams)) {
+
+                if ($setting = \R::findOne('setting', $sql, $queryParams)) {
                     $setting->value = $_POST[$s];
-                    if ($vendorBean->id) {
+                    if (isset($vendorBean) && $vendorBean->id) {
                         $setting->vendor = $vendorBean;
                     }
                     \R::store($setting);
@@ -73,7 +76,7 @@ class Controller extends AdminController
                     $setting = \R::dispense('setting');
                     $setting->name = $s;
                     $setting->value = $_POST[$s];
-                    if ($vendorBean->id) {
+                    if (isset($vendorBean) && $vendorBean->id) {
                         $setting->vendor = $vendorBean;
                     }
                     \R::store($setting);
@@ -83,6 +86,7 @@ class Controller extends AdminController
         }
         
         $this->assign('settings', $service->loadSettings());
+        $this->assign('settings_available', $settings);
         $this->setTemplate('elib:/admin/siteinfo/settings.tpl');
     }
 }
