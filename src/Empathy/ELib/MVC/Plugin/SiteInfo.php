@@ -3,9 +3,10 @@
 namespace Empathy\ELib\MVC\Plugin;
 
 use Empathy\MVC\Plugin\PreEvent;
-use Empathy\MVC\Plugin as Plugin;
+use Empathy\MVC\Plugin;
 use Empathy\MVC\DI;
 use Empathy\MVC\Config;
+use Empathy\ELib\VCache;
 
 class SiteInfo extends Plugin implements PreEvent
 {
