@@ -31,7 +31,7 @@ null, 'link1url', 'https://twitter.com/onlinevibes_', null
 
 
 INSERT INTO setting values(
-null, 'linke2name', 'Instagram', null
+null, 'link2name', 'Instagram', null
 );
 
 INSERT INTO setting values(
