@@ -2,6 +2,7 @@
 
 namespace Empathy\ELib\Settings;
 
+use App\Http\Controllers\Api\Data\PaladinNetworkController;
 use Empathy\ELib\AdminController;
 use Empathy\MVC\RequestException;
 use Empathy\MVC\VCache;
@@ -55,7 +56,7 @@ class Controller extends AdminController
             }
 
             foreach ($settings as $s) {
-                if (!isset($_POST[$s])) {
+                if (!isset($_POST[$s]) || $_POST[$s] === '') {
                   break;
                 }
 
@@ -64,6 +65,8 @@ class Controller extends AdminController
                 if (isset($vendorBean) && $vendorBean->id) {
                     $sql .= ' and vendor_id = ?';
                     array_push($queryParams, $vendorId);
+                } else {
+                    $sql .= ' and vendor_id is null';
                 }
 
                 if ($setting = \R::findOne('setting', $sql, $queryParams)) {
