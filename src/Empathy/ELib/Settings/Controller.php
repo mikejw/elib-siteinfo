@@ -56,7 +56,7 @@ class Controller extends AdminController
             }
 
             foreach ($settings as $s) {
-                if (!isset($_POST[$s]) || $_POST[$s] === '') {
+                if (!isset($_POST[$s])) {
                   break;
                 }
 
