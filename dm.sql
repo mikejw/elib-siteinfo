@@ -22,7 +22,7 @@ null, 'blogsubtitle', 'A blog about vibes', null
 );
 
 INSERT INTO setting values(
-null, 'linke1name', 'X', null
+null, 'link1name', 'X', null
 );
 
 INSERT INTO setting values(
