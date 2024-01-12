@@ -15,7 +15,7 @@ class SiteInfo extends Plugin implements PreDispatch, PreEvent
     {
         $stash = DI::getContainer()->get('Stash');
         $cacheHost = str_replace('db-', 'cache-', Config::get('DB_SERVER'));
-        if ($cacheHost === "") {
+        if (strpos('db', $cacheHost) === 0) {
             $cacheHost = 'cache';
         }
         $cache = new VCache($cacheHost, 11211, null, DI::getContainer()->get('CacheEnabled'));

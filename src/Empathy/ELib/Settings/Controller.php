@@ -36,7 +36,6 @@ class Controller extends AdminController
     {
         $cache = $this->stash->get('cache');
         $cache_data = $cache->getAllCacheData();
-
         $this->assign('cache_data', $cache_data);
         $this->setTemplate('elib://admin/siteinfo/cache.tpl');
     }
