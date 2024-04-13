@@ -1,5 +1,10 @@
 <?php
 
+/**
+* Use this plugin for automatically caching site info data and assigning to Smarty.
+* Also for making the cache generally abailable through the stash object.
+*/
+
 namespace Empathy\ELib\MVC\Plugin;
 
 use Empathy\MVC\Plugin\PreDispatch;
@@ -14,12 +19,9 @@ class SiteInfo extends Plugin implements PreDispatch, PreEvent
     public function onPreDispatch()
     {
         $stash = DI::getContainer()->get('Stash');
-        $cacheHost = str_replace('db-', 'cache-', Config::get('DB_SERVER'));
-        if (strpos('db', $cacheHost) === 0) {
-            $cacheHost = 'cache';
-        }
-        $cache = new VCache($cacheHost, 11211, null, DI::getContainer()->get('CacheEnabled'));
-        $stash->store('cache', $cache);
+	$cache = DI::getContainer()->get('Cache');
+        $stash->store('cache', $cache);;
+	
         $siteInfoService = DI::getContainer()->get('SiteInfo');
         $stash->store('site_info', $cache->cachedCallback('site_info', array($siteInfoService, 'getAll')));
     }

@@ -14,7 +14,9 @@
     {$k}
 </p>
 <pre>
-    {$data}
+<code>
+    {$data|escape}
+</code>
 </pre>
 
 {/foreach}
