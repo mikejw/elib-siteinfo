@@ -5,7 +5,7 @@
     "keywords": [
         "lib"
     ],
-    "homepage": "http://empathyphp.co.uk",
+    "homepage": "https://empathy.sh",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "mikejw/elib-base": "dev-master",
+        "mikejw/elib-base": "^2",
         "gabordemooij/redbean": "dev-master"
     },
     "autoload": {
