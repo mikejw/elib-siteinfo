@@ -7,6 +7,7 @@ use Empathy\MVC\DI;
 class SiteInfo
 {
     private $vendorId = 0;
+    private $settings;
 
     public function __construct()
     {
