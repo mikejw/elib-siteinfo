@@ -37,7 +37,7 @@ class Controller extends AdminController
         $cache = $this->stash->get('cache');
         $cache_data = $cache->getAllCacheData();
         $this->assign('cache_data', $cache_data);
-        $this->setTemplate('elib://admin/siteinfo/cache.tpl');
+        $this->setTemplate('elib:admin/siteinfo/cache.tpl');
     }
 
 
@@ -89,6 +89,6 @@ class Controller extends AdminController
         
         $this->assign('settings', $service->loadSettings());
         $this->assign('settings_available', $settings);
-        $this->setTemplate('elib:/admin/siteinfo/settings.tpl');
+        $this->setTemplate('elib:admin/siteinfo/settings.tpl');
     }
 }

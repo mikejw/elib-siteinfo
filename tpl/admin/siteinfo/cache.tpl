@@ -1,4 +1,4 @@
-{include file="elib:/admin/admin_header.tpl"}
+{include file="elib:admin/admin_header.tpl"}
 
 
 <form class="confirm" action="http://{$WEB_ROOT}{$PUBLIC_DIR}/admin/settings/clear_cache" method="get">
@@ -23,4 +23,4 @@
 
 
 
-{include file="elib:/admin/admin_footer.tpl"}
+{include file="elib:admin/admin_footer.tpl"}

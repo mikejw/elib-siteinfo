@@ -1,4 +1,4 @@
-{include file="elib:/admin/admin_header.tpl"}
+{include file="elib:admin/admin_header.tpl"}
 
 
 <div class="cms-actions form-group">
@@ -38,4 +38,4 @@
 
 <p>&nbsp;</p>
 
-{include file="elib:/admin/admin_footer.tpl"}
+{include file="elib:admin/admin_footer.tpl"}
