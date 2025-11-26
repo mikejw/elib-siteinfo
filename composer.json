@@ -21,5 +21,10 @@
         "psr-0": {
             "Empathy": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-feature/bs5": "4.x-dev"
+        }
     }
 }
