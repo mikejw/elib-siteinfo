@@ -1,7 +1,7 @@
 {
     "name": "mikejw/elib-siteinfo",
     "type": "library",
-    "description": "Store and retrieve site information and settings",
+    "description": "ELib SiteInfo",
     "keywords": [
         "lib"
     ],
