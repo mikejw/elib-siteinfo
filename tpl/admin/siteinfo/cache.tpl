@@ -2,7 +2,7 @@
 
 
 <form class="confirm" action="http://{$WEB_ROOT}{$PUBLIC_DIR}/admin/settings/clear_cache" method="get">
-    <div class="cms-actions form-group">
+    <div class="cms-actions mb-4 mt-4">
         <button class="btn btn-sm btn-primary" type="submit" name="clear_cache" value="1">Clear</button>
     </div>
 </form>

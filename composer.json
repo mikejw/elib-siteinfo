@@ -1,7 +1,7 @@
 {
     "name": "mikejw/elib-siteinfo",
     "type": "library",
-    "description": "Store and retrieve site information and settings",
+    "description": "ELib SiteInfo",
     "keywords": [
         "lib"
     ],
@@ -20,6 +20,11 @@
     "autoload": {
         "psr-0": {
             "Empathy": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-feature/bs5": "4.x-dev"
         }
     }
 }

@@ -1,28 +1,27 @@
 {include file="elib:admin/admin_header.tpl"}
 
 
-<div class="cms-actions form-group">
+<div class="cms-actions mb-4 mt-4">
   <a class="btn btn-sm btn-primary" href="http://{$WEB_ROOT}{$PUBLIC_DIR}/admin/settings/cache">Cache</a>
 </div>
 
 {if isset($errors) and sizeof($errors)}
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Error!</strong>
-    {foreach from=$errors item=e}
-        <p>{$e}</p>
-    {/foreach}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Error</strong>
+        {foreach from=$errors item=e}
+            <p>{$e}</p>
+        {/foreach}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 {/if}
 
-<h4>SEO Settings</h4>
-<form action="" method="post">
 
+<h2 class="mb-4">SEO Settings</h2>
+
+<form action="" method="post">
     {foreach from=$settings_available item=name}
-      <div class="form-group">
-          <label for="{$name}">{$name}:</label>
+      <div class="mb-3">
+          <label class="form-label" for="{$name}">{$name}:</label>
 
           {if preg_match('/description/', $name)}
             <textarea name="{$name}" class="form-control raw" id="{$name}" rows="3">{$settings->$name}</textarea>
@@ -32,8 +31,10 @@
       </div>
     {/foreach}
 
-    <button type="submit" name="save" class="btn btn-primary">Save</button>
-    <button type="submit" name="cancel" class="btn btn-primary">Cancel</button>
+    <div class="mb-3">
+        <button type="submit" name="save" class="btn btn-primary">Save</button>
+        <button type="submit" name="cancel" class="btn btn-primary">Cancel</button>
+    </div>
 </form>
 
 <p>&nbsp;</p>
