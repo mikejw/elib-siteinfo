@@ -2,6 +2,13 @@
 # Changelog
 
 
+## [4.1.0] - 2025-11-29
+
+### Changed
+
+- Upgrade to Bootstrap 5
+
+
 ## [4.0.0] - 2025-05-28
 
 ### Changed
@@ -11,7 +18,6 @@
 ### Fixed
 
 - Misc fixes
-
 
 
 ## [3.0.0] - 2025-05-23
