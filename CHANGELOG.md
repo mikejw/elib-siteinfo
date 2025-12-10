@@ -2,6 +2,13 @@
 # Changelog
 
 
+## [4.1.1] - 2025-11-29
+
+### Fixed
+
+- Filter out blog image data in meta descriptions
+
+
 ## [4.1.0] - 2025-11-29
 
 ### Changed
