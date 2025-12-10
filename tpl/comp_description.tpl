@@ -1,6 +1,1 @@
-<meta name="description" content="{if $custom_description neq ''}
-    {$custom_description|strip_tags|regex_replace:"~\[blog-image:[^]]+\]~":""|escape|truncate:500}
-    {else}
-    {$site_info->description|strip_tags:false}
-    {/if}
-" />
+<meta name="description" content="{if $custom_description neq ''}{$custom_description|strip_tags|regex_replace:"~\[blog-image:[^]]+\]~":""|escape|truncate:500}{else}{$site_info->description|strip_tags:false|escape}{/if}">
