@@ -2,6 +2,13 @@
 # Changelog
 
 
+## [4.1.2] - 2026-03-03
+
+### Fixed
+
+- Use tagged redbean version
+
+
 ## [4.1.1] - 2025-12-10
 
 ### Fixed

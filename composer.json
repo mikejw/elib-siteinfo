@@ -15,7 +15,7 @@
   ],
   "require": {
     "mikejw/elib-base": "^4",
-    "gabordemooij/redbean": "dev-master"
+    "gabordemooij/redbean": "~5.7.5"
   },
   "autoload": {
     "psr-0": {
