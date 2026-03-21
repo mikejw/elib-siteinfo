@@ -16,7 +16,7 @@ use Empathy\ELib\VCache;
 
 class SiteInfo extends Plugin implements PreDispatch, PreEvent
 {
-    public function onPreDispatch()
+    public function onPreDispatch(): void
     {
         $stash = DI::getContainer()->get('Stash');
 	    $cache = DI::getContainer()->get('Cache');
@@ -26,7 +26,7 @@ class SiteInfo extends Plugin implements PreDispatch, PreEvent
         $stash->store('site_info', $cache->cachedCallback('site_info', array($siteInfoService, 'getAll')));
     }
     
-    public function onPreEvent()
+    public function onPreEvent(): void
     {
         $controller = DI::getContainer()->get('Controller');
         $controller->assign('site_info', DI::getContainer()->get('Stash')->get('site_info'));

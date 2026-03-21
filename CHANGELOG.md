@@ -2,6 +2,13 @@
 # Changelog
 
 
+## [4.1.3] - 2026-03-21
+
+### Fixed
+
+- Fix method signatures
+
+
 ## [4.1.2] - 2026-03-03
 
 ### Fixed
