@@ -2,11 +2,12 @@
 # Changelog
 
 
-## [4.1.3] - 2026-03-21
+## [4.1.3] - 2026-03-22
 
 ### Fixed
 
 - Fix method signatures
+- Fix module gen types
 
 
 ## [4.1.2] - 2026-03-03
