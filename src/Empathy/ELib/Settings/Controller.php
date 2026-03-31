@@ -41,7 +41,7 @@ class Controller extends AdminController
     }
 
 
-    public function default_event()
+    public function default_event(): void
     {
         $vendorId = $this->stash->get('vendorId');
         $service = DI::getContainer()->get('SiteInfo');
